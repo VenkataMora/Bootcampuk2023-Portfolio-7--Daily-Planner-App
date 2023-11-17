@@ -42,3 +42,21 @@ function hourStyles(){
     });
 }
 hourStyles();
+function loadEvents() {
+    $(".time-block").each(function () {
+      var hour = $(this).attr("data-hour");
+      var event = localStorage.getItem("event_" + hour);
+      if (event) {
+        $(this).find(".description").val(event);
+      }
+    });
+}
+loadEvents();
+setInterval(hourStyles, 60000);
+
+function saveEvent() {
+    var hour = $(this).parent().attr("data-hour"); 
+    var event = $(this).siblings(".description").val();
+    localStorage.setItem("event_" + hour, event);
+  }
+  saveEvent();
