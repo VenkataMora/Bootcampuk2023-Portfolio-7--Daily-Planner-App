@@ -1,6 +1,7 @@
 # Daily Planner
 
 ## Description
+
 This is a simple web*based daily planner application that allows users to schedule events and tasks for each hour of the workday. The application provides a visual representation of time blocks, current time indication, and the ability to save and load events using local storage.
 
 ## Live Application URL
