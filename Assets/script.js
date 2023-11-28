@@ -41,22 +41,27 @@ function hourStyles(){
 
     });
 }
-hourStyles();
+
 function loadEvents() {
     $(".time-block").each(function () {
-      var hour = $(this).attr("data-hour");
-      var event = localStorage.getItem("event_" + hour);
+      var time = $(this).attr("data-hour");
+      var event = JSON.parse(localStorage.getItem("event_" + time));
       if (event) {
         $(this).find(".description").val(event);
       }
     });
 }
+$(".container").on('click',saveEvent);
+
+
+function saveEvent(event) {
+    if($(event.target).hasClass('saveBtn')){
+    var times = $(event.target).parent().attr("data-hour"); 
+    var eventDescription = $(event.target).siblings(".description").val();
+    localStorage.setItem("event_" + times,JSON.stringify(eventDescription));
+  }
+}
 loadEvents();
 setInterval(hourStyles, 60000);
-
-function saveEvent() {
-    var hour = $(this).parent().attr("data-hour"); 
-    var event = $(this).siblings(".description").val();
-    localStorage.setItem("event_" + hour, event);
-  }
-  saveEvent();
+hourStyles();
+aveEvent();
